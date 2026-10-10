@@ -1,0 +1,34 @@
+{
+  "id": "conflicting-travel-policy",
+  "task": "What is the current travel reimbursement cap? Explain the policy change.",
+  "tags": ["conflicting-sources", "multiple-evidence"],
+  "budgetFraction": 0.6,
+  "necessaryDocumentIds": ["travel-current", "travel-superseded"],
+  "annotation": "The answer must state the current cap and explain that it replaced the earlier cap. Both source documents are needed; repeated terms do not make either redundant.",
+  "documents": [
+    {
+      "id": "travel-current",
+      "source": "synthetic/travel/current",
+      "text": "Current travel reimbursement policy: the daily lodging cap is 180 credits. This rule replaces the earlier lodging cap on 1 June of the synthetic policy year; consult the archived rule for its amount. The meal allowance remains separate and receipts are required.",
+      "atomic": true
+    },
+    {
+      "id": "travel-superseded",
+      "source": "synthetic/travel/superseded",
+      "text": "Superseded travel reimbursement policy: the daily lodging cap was 140 credits. This archived version ceased to apply on 1 June of the synthetic policy year. It remains available to explain claims filed before the change.",
+      "atomic": true
+    },
+    {
+      "id": "travel-help-index",
+      "source": "synthetic/travel/help",
+      "text": "What is the current travel reimbursement cap? Explain the policy change. These questions are listed in the travel help index. The reimbursement cap and policy change must be checked against the current and archived rules.",
+      "atomic": true
+    },
+    {
+      "id": "conference-location",
+      "source": "synthetic/events/location",
+      "text": "The annual conference uses meeting rooms on the second floor. Registration begins at 08:30 and the first session begins at 09:00. Guests receive a printed agenda and should keep their registration badge visible.",
+      "atomic": true
+    }
+  ]
+}

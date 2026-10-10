@@ -1,0 +1,40 @@
+{
+  "id": "multihop-delivery",
+  "task": "Which delivery zone should case R7 use?",
+  "tags": ["multi-hop", "dependency", "lexical-failure"],
+  "budgetFraction": 0.55,
+  "necessaryDocumentIds": ["case-record", "district-map", "zone-map"],
+  "annotation": "Answering requires the chain R7 -> Bluebrook -> eastern district -> zone Delta. Repeating the query in unrelated dispatch notes is insufficient.",
+  "documents": [
+    {
+      "id": "case-record",
+      "source": "synthetic/dispatch/cases",
+      "text": "Delivery case R7 has destination Bluebrook. The assigned driver must use the district and zone tables rather than infer a route from the case number. Case R8 has destination Glenmarket and is a separate delivery.",
+      "atomic": true
+    },
+    {
+      "id": "district-map",
+      "source": "synthetic/dispatch/districts",
+      "text": "Bluebrook belongs to the eastern district. Glenmarket belongs to the northern district. Westford belongs to the western district. District boundaries follow the administrative register rather than the warehouse location.",
+      "atomic": true
+    },
+    {
+      "id": "zone-map",
+      "source": "synthetic/dispatch/zones",
+      "text": "The eastern district maps to zone Delta. The northern district maps to zone Cedar. The western district maps to zone Birch. These assignments apply throughout the current schedule and replace earlier routing tables.",
+      "atomic": true
+    },
+    {
+      "id": "routing-question",
+      "source": "synthetic/dispatch/questions",
+      "text": "Which delivery zone should case R7 use? This is a frequently asked routing question. The delivery zone for case R7 cannot be obtained from this question list; use the destination and mapping tables.",
+      "atomic": true
+    },
+    {
+      "id": "routing-checklist",
+      "source": "synthetic/dispatch/checklist",
+      "text": "Before deciding which delivery zone case R7 should use, verify that case R7 has a delivery address. A delivery zone should be confirmed with a dispatcher. This checklist supplies no actual mapping or zone name.",
+      "atomic": true
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "basic-escalation",
+  "task": "What is the support escalation deadline?",
+  "tags": ["lexical", "single-hop"],
+  "budgetFraction": 0.55,
+  "necessaryDocumentIds": ["support-policy"],
+  "annotation": "The support-policy document alone contains the requested deadline. Office procedures cannot establish it.",
+  "documents": [
+    {
+      "id": "support-policy",
+      "source": "synthetic/support/policy",
+      "text": "The support escalation deadline is four hours after a case is opened. Escalate to the duty lead if the assigned responder has not resolved the case. Keep the original case reference in the escalation message.",
+      "atomic": true
+    },
+    {
+      "id": "office-lunch",
+      "source": "synthetic/office/lunch",
+      "text": "Lunch is served from noon until 14:00. Vegetarian dishes are marked with a green card. The kitchen publishes its menu every Monday and clears trays at the end of service.",
+      "atomic": true
+    },
+    {
+      "id": "office-plants",
+      "source": "synthetic/office/plants",
+      "text": "Water the lobby planters twice a week. Check the soil before watering and return the watering can to the supply closet. Replacement pots are stored beside the maintenance desk.",
+      "atomic": true
+    },
+    {
+      "id": "office-parking",
+      "source": "synthetic/office/parking",
+      "text": "Visitors park in the east lot. The bicycle entrance is on the south side of the building. Staff may request a permit from reception and should display it on the dashboard.",
+      "atomic": true
+    }
+  ]
+}

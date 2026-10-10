@@ -1,0 +1,34 @@
+{
+  "id": "synonym-retention",
+  "task": "How long can archived records be kept before disposal?",
+  "tags": ["synonym", "lexical-failure"],
+  "budgetFraction": 0.5,
+  "necessaryDocumentIds": ["governance-rule"],
+  "annotation": "The governance rule states the retention duration using different vocabulary. The index and terminology notes repeat query words without supplying a duration.",
+  "documents": [
+    {
+      "id": "governance-rule",
+      "source": "synthetic/governance/rule",
+      "text": "Historical dossiers must remain in custody for seven years following closure. At the end of that interval, the custodian shall destroy them unless a litigation hold applies. Holds take precedence over scheduled destruction.",
+      "atomic": true
+    },
+    {
+      "id": "archive-index",
+      "source": "synthetic/archive/index",
+      "text": "Archived records are indexed by department. The disposal desk handles questions about how long records can be kept, but this index states no retention duration. Consult the governing rule for an answer.",
+      "atomic": true
+    },
+    {
+      "id": "archive-terminology",
+      "source": "synthetic/archive/terminology",
+      "text": "Before disposal, archived records may be called files, dossiers, or stored papers. These labels describe the same category. This glossary has no rule about how long they can be kept.",
+      "atomic": true
+    },
+    {
+      "id": "desk-hours",
+      "source": "synthetic/archive/desk-hours",
+      "text": "The archive desk opens at 09:00 on weekdays. Visitors must reserve a seat and bring a reader card. Collection requests are processed in the order received and closed on public holidays.",
+      "atomic": true
+    }
+  ]
+}

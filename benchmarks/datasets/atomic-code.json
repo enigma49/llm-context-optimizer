@@ -1,0 +1,34 @@
+{
+  "id": "atomic-migration-code",
+  "task": "Which migration removes the legacy_status column and what rollback restores it?",
+  "tags": ["code", "atomic", "single-hop"],
+  "budgetFraction": 0.5,
+  "necessaryDocumentIds": ["migration-042"],
+  "annotation": "The complete forward and rollback code must remain together. A filename or a help index cannot establish both SQL operations.",
+  "documents": [
+    {
+      "id": "migration-042",
+      "source": "synthetic/migrations/042.sql",
+      "text": "Migration 042 removes the legacy_status column.\n```sql\n-- forward\nALTER TABLE tickets DROP COLUMN legacy_status;\n-- rollback\nALTER TABLE tickets ADD COLUMN legacy_status TEXT NOT NULL DEFAULT 'open';\n```\nThe rollback restores the schema with a default value, not the deleted historical values.",
+      "atomic": true
+    },
+    {
+      "id": "migration-041",
+      "source": "synthetic/migrations/041.sql",
+      "text": "Migration 041 creates the owner lookup index.\n```sql\n-- forward\nCREATE INDEX tickets_owner_idx ON tickets(owner_id);\n-- rollback\nDROP INDEX tickets_owner_idx;\n```\nThis migration changes lookup performance and does not remove a column or alter stored ticket status values.",
+      "atomic": true
+    },
+    {
+      "id": "migration-index",
+      "source": "synthetic/migrations/index",
+      "text": "Which migration removes the legacy_status column and what rollback restores it? The migration catalog lists this question but supplies no SQL. Review the numbered migration itself; this index cannot determine the rollback or identify its exact operation.",
+      "atomic": true
+    },
+    {
+      "id": "deployment-roster",
+      "source": "synthetic/deploy/roster",
+      "text": "The release coordinator records the deployment window. Operators acknowledge the checklist before beginning maintenance. The incident lead remains available during the window, and the coordinator posts completion after the final operational review.",
+      "atomic": true
+    }
+  ]
+}

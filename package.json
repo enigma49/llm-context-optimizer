@@ -1,0 +1,101 @@
+{
+  "name": "llm-context-optimizer",
+  "version": "0.1.0",
+  "description": "Conservative multi-provider context selection with local and TypeSafe Jev backends",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=24"
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE",
+    "SECURITY.md",
+    "CONTRIBUTING.md",
+    "docs",
+    "examples",
+    "benchmarks"
+  ],
+  "keywords": [
+    "llm",
+    "context",
+    "tokens",
+    "jev",
+    "openai",
+    "anthropic",
+    "gemini"
+  ],
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./providers/openai": {
+      "types": "./dist/providers/openai.d.ts",
+      "import": "./dist/providers/openai.js"
+    },
+    "./providers/anthropic": {
+      "types": "./dist/providers/anthropic.d.ts",
+      "import": "./dist/providers/anthropic.js"
+    },
+    "./providers/google": {
+      "types": "./dist/providers/google.d.ts",
+      "import": "./dist/providers/google.js"
+    },
+    "./backends/jev": {
+      "types": "./dist/backends/jev.d.ts",
+      "import": "./dist/backends/jev.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "benchmark": "npm run build && node benchmarks/run.mjs",
+    "example:local": "npm run build && node examples/local.ts",
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm test && npm run build",
+    "prepack": "npm run build"
+  },
+  "peerDependencies": {
+    "openai": "~7.31.0",
+    "@anthropic-ai/sdk": "~0.132.1",
+    "@google/genai": "~2.28.0",
+    "@typesafe-ai/sdk": "~0.6.0"
+  },
+  "peerDependenciesMeta": {
+    "openai": {
+      "optional": true
+    },
+    "@anthropic-ai/sdk": {
+      "optional": true
+    },
+    "@google/genai": {
+      "optional": true
+    },
+    "@typesafe-ai/sdk": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@anthropic-ai/sdk": "0.132.1",
+    "@google/genai": "2.28.0",
+    "@typesafe-ai/sdk": "0.6.0",
+    "openai": "7.31.0",
+    "@types/node": "^24.0.0",
+    "@eslint/js": "10.0.1",
+    "eslint": "10.12.0",
+    "typescript-eslint": "8.71.1",
+    "prettier": "3.9.9",
+    "typescript": "5.9.3",
+    "vitest": "5.0.3"
+  }
+}

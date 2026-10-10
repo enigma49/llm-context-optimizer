@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm run benchmark -- --output benchmarks/reports/ci.json
+      - run: npm pack --dry-run
+      - uses: actions/upload-artifact@v7
+        with:
+          name: offline-benchmark
+          path: benchmarks/reports/ci.json
+          if-no-files-found: error
